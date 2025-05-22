@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CryptoAlerts</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+   <div class="nav-container">
+  <div class="logo">BITFOLIO</div>
+  <div class="hamburger" id="hamburger">
+    <i class="fas fa-bars"></i>
+  </div>
+  <ul class="nav-links" id="nav-links">
+    <li>Home</li>
+    <li>Contact</li>
+    <li class="mobile-login-btn"><a href="#login-form" style="text-decoration: none; color: white;">Login</a></li>
+  </ul>
+</div>
+
+
+    <div class="background-overlay">
+        <svg class="crypto-grid" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <defs>
+                <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1f2f32" stroke-width="1"/>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)">
+                <animate attributeName="x" from="0" to="40" dur="5s" repeatCount="indefinite" />
+            </rect>
+        </svg>
+    </div>
+
+    <div class="main-container">
+        <div class="left-content">
+            <h1>Bitfolio</h1>
+            <p>Track your portfolio with precision.</p>
+        </div>
+        <div class="right-content">
+            <div class="form-toggle">
+                <button id="show-login" class="active">Login</button>
+                <button id="show-signup">Signup</button>
+            </div>
+            <div class="forms">
+                <form id="login-form" class="form active-form" method="POST" action="/login">
+                    <h2>Login</h2>
+                    <input type="email" name="email" placeholder="Email" required />
+                    <input type="password" name="password" placeholder="Password" required />
+                    <button type="submit">Login</button>
+                </form>
+
+                <form id="signup-form" class="form" method="POST" action="/signup">
+                    <h2>Signup</h2>
+                    <input type="text" name="username" placeholder="Username" required />
+                    <input type="email" name="email" placeholder="Email" required />
+                    <input type="password" name="password" placeholder="Password" required />
+                    <button type="submit">Signup</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer-container">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h3>Bitfolio</h3>
+                <p>&copy; 2025 Bitfolio. All rights reserved.</p>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> bitfolio@gmail.com</li>
+                    <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Bangalore, India</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    const loginBtn = document.getElementById("show-login");
+    const signupBtn = document.getElementById("show-signup");
+    const loginForm = document.getElementById("login-form");
+    const signupForm = document.getElementById("signup-form");
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("nav-links");
+
+    // Toggle mobile menu
+    hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+    });
+
+    // Form toggle
+    loginBtn.addEventListener("click", () => {
+        loginBtn.classList.add("active");
+        signupBtn.classList.remove("active");
+        loginForm.classList.add("active-form");
+        signupForm.classList.remove("active-form");
+    });
+
+    signupBtn.addEventListener("click", () => {
+        signupBtn.classList.add("active");
+        loginBtn.classList.remove("active");
+        signupForm.classList.add("active-form");
+        loginForm.classList.remove("active-form");
+    });
+
+    hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+    });
+
+    // Scroll to login form if Login in nav clicked
+    document.querySelectorAll('.mobile-login-btn a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            navLinks.classList.remove("show");
+            document.getElementById("login-form").scrollIntoView({ behavior: "smooth" });
+        });
+    });
+</script>
+
+</body>
+
+</html>

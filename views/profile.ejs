@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crypto Dashboard</title>
+  <link rel="stylesheet" href="/css/profile.css">
+</head>
+<body>
+  <header>
+    <div class="logo">BITFOLIO</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Contact Us</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <aside class="sidebar">
+      <div class="avatar"></div>
+      <p class="user-name"><%= username %></p>
+      <% if (portfolio && portfolio.length > 0) { %>
+      <p class="subscribed">Subscribed to:</p>
+        <div class="portfolio-buttons">
+        <% portfolio.forEach(coin => { %>
+        <button onclick="loadCrypto('<%= coin %>')"><%= coin %></button>
+        <% }) %>
+        </div>
+      <% } else { %>
+      <p class="subscribed">No cryptos subscribed yet.</p>
+      <% } %>
+      </div>
+      </div>
+      <a href="/explore?user=<%= username %>" class="explore-btn">Explore Cryptocurrency</a>
+    </aside>
+    <section class="content">
+      <section id="crypto-section" style="display:none;">
+        <h2 style="margin-bottom: 1rem;">Cryptocurrencies</h2>
+        <div id="crypto-list" class="crypto-grid"></div>
+      </section>
+        <h2 class="crypto-title">Name of Crypto</h2>
+        <div class="chart-box">
+          <canvas id="cryptoChart" width="400" height="200"></canvas>
+        </div>
+        <div class="info-boxes">
+          <div class="info">Current Price</div>
+          <div class="info">Rise/Fall</div>
+          <div class="info">Ranking</div>
+        </div>
+        <div class="user-details">
+          User Entered Details – Threshold, Interval for Mails, Edit Button and Delete Button
+        </div>
+      </div>
+    </section>
+  </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+  async function loadCrypto(coinId) {
+  const chartTitle = document.querySelector('.crypto-title');
+  const chartCanvas = document.getElementById('cryptoChart');
+  const infoBoxes = document.querySelectorAll('.info');
+  try {
+    const res = await fetch(`https://api.coingecko.com/api/v3/coins/${coinId}`);
+    const data = await res.json();
+    
+    chartTitle.textContent = data.name;
+    infoBoxes[0].textContent = `Current Price: $${data.market_data.current_price.usd}`;
+    infoBoxes[1].textContent = `24h Change: ${data.market_data.price_change_percentage_24h.toFixed(2)}%`;
+    infoBoxes[2].textContent = `Market Cap Rank: ${data.market_cap_rank}`;
+
+    const historyRes = await fetch(`https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=usd&days=7`);
+    const history = await historyRes.json();
+
+    const labels = history.prices.map(p => new Date(p[0]).toLocaleDateString());
+    const prices = history.prices.map(p => p[1]);
+
+    if (window.cryptoChartInstance) {
+      window.cryptoChartInstance.destroy();
+    }
+
+    window.cryptoChartInstance = new Chart(chartCanvas, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: `${data.name} (last 7 days)`,
+          data: prices,
+          borderColor: '#4bc0c0',
+          backgroundColor: 'rgba(75, 192, 192, 0.1)',
+          tension: 0.3,
+          fill: true,
+          pointRadius: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            labels: { color: 'white' }
+          }
+        },
+        scales: {
+          x: { ticks: { color: 'white' } },
+          y: { ticks: { color: 'white' } }
+        }
+      }
+    });
+
+    // Show and scroll to the chart section
+    const chartSection = document.getElementById('crypto-section');
+    chartSection.style.display = 'block';
+    chartSection.scrollIntoView({ behavior: 'smooth' });
+
+  } catch (err) {
+    console.error("Failed to fetch or plot data", err);
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,350 @@
+body {
+    background-color: #101A1C;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.nav-container {
+    height: 60px;
+    width: 100vw;
+    background-color: #142022;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.nav-links li {
+    cursor: pointer;
+}
+.footer-container {
+    background-color: #142022;
+    color: white;
+    padding: 30px 20px;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+}
+
+.footer-logo h3 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.footer-contact h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.footer-contact ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-contact li {
+    margin: 5px 0;
+    font-size: 0.95rem;
+}
+
+.footer-contact i {
+    margin-right: 8px;
+    color: #00ADB5; 
+}
+@media (min-width: 600px) {
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    .footer-logo, .footer-contact {
+        flex: 1;
+    }
+}
+
+/* Background Grid Overlay */
+.background-overlay {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 60px);
+    overflow: hidden;
+    z-index: -1;
+}
+
+.crypto-grid {
+    width: 100%;
+    height: 100%;
+}
+
+/* Main layout */
+.main-container {
+    display: flex;
+    height: calc(100vh - 60px);
+    width: 100%;
+    color: white;
+}
+
+.left-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    text-align: center;
+    z-index: 1;
+}
+
+.left-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    color: #00ADB5;
+}
+
+.left-content p {
+    font-size: 1.2rem;
+    opacity: 0.85;
+}
+
+/* Right content */
+.right-content {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(6px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+    z-index: 1;
+}
+
+.form-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-toggle button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 10px;
+    border-bottom: 2px solid transparent;
+}
+
+.form-toggle .active {
+    border-bottom: 2px solid #00ADB5;
+    font-weight: bold;
+}
+
+.forms {
+    display: flex;
+    justify-content: center;
+}
+
+.form {
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+    animation: slidein 0.4s ease;
+    width: 70%; /* Reduced width */
+    max-width: 300px;
+}
+
+.active-form {
+    display: flex;
+}
+
+@keyframes slidein {
+    from {
+        transform: translateX(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.form h2 {
+    margin-bottom: 10px;
+}
+
+.form input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.form button {
+    padding: 10px;
+    background-color: #00ADB5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.form button:hover {
+    background-color: #019ca1;
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .left-content, .right-content {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .left-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .left-content p {
+        font-size: 1rem;
+    }
+
+    .form {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .form-toggle {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-container {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        padding-bottom: 10px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-container {
+        margin-top: 50px;
+        width: 105vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .left-content h1 {
+        font-size: 2rem;
+    }
+
+    .left-content p {
+        font-size: 0.95rem;
+    }
+
+    .form input, .form button {
+        font-size: 0.95rem;
+        padding: 8px;
+    }
+
+    .form-toggle button {
+        font-size: 0.95rem;
+    }
+}
+
+/* Hamburger styles */
+.hamburger {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Mobile nav behavior */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: row;
+        justify-content: space-between;
+        /* padding: 10px 15px; */
+        width: 110vw;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+        flex: 1;
+    }
+
+    .hamburger {
+        display: block;
+        color: white;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #142022;
+    }
+
+    .nav-links li {
+        padding: 10px;
+        text-align: center;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .mobile-login-btn {
+        display: block;
+    }
+
+    .form-toggle {
+        margin-top: 20px;
+    }
+
+    .right-content {
+        margin: 0 auto;
+    }
+
+    .form {
+        margin: 0 auto;
+        width: 90%;
+        max-width: 300px;
+    }
+}

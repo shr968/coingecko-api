@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Explore Cryptos</title>
+  <link rel="stylesheet" href="/css/explore.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <body>
+  <h2>Explore Cryptocurrencies</h2>
+
+  <div class="search-container">
+    <input type="text" id="search" placeholder="Search for a cryptocurrency..." oninput="filterCryptos()" />
+  </div>
+
+  <div id="crypto-list" class="crypto-grid"></div>
+
+
+  <script>
+  const username = "<%= username %>";
+  let coinsData = []; // Store all coins globally
+
+  async function fetchCryptos() {
+    const response = await fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd");
+    coinsData = await response.json(); // Save data
+    displayCryptos(coinsData); // Initial render
+  }
+
+  function displayCryptos(coins) {
+    const list = document.getElementById("crypto-list");
+    list.innerHTML = ""; // Clear existing
+    coins.forEach(coin => {
+      const div = document.createElement("div");
+      div.className = "coin-card";
+      div.innerHTML = `
+        <h3>${coin.name}</h3>
+        <img src="${coin.image}" width="40"/>
+        <p>Price: $${coin.current_price}</p>
+        <button onclick="addToPortfolio('${coin.id}')">Add</button>
+      `;
+      list.appendChild(div);
+    });
+  }
+
+  function filterCryptos() {
+    const keyword = document.getElementById("search").value.toLowerCase();
+    const filtered = coinsData.filter(coin =>
+      coin.name.toLowerCase().includes(keyword)
+    );
+    displayCryptos(filtered);
+  }
+
+  async function addToPortfolio(cryptoId) {
+    await fetch("/add-crypto", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, cryptoId }),
+    });
+    alert("Crypto added to your portfolio!");
+window.location.href = `/profile?user=${username}`;
+  }
+
+  fetchCryptos();
+</script>
+
+</body>
+</html>
