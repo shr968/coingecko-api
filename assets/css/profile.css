@@ -132,7 +132,6 @@ nav a {
   box-shadow: 0 0 8px rgba(0,255,255,0.2);
 }
 
-/* Container for crypto buttons */
 .portfolio-buttons {
   display: flex;
   flex-wrap: wrap;
@@ -141,10 +140,9 @@ nav a {
   margin-bottom: 1rem;
 }
 
-/* Crypto coin buttons */
 .portfolio-buttons button {
-  background-color: #081014;  /* Dark navy */
-  border: 2px solid #00ffd5;  /* turquoise border */
+  background-color: #081014;  
+  border: 2px solid #00ffd5;  
   border-radius: 12px;
   padding: 6px 14px;
   color: #00ffd5;
@@ -152,16 +150,15 @@ nav a {
   cursor: pointer;
   font-size: 0.95rem;
   transition: background-color 0.25s ease, color 0.25s ease;
-  box-shadow: none; /* no glow */
+  box-shadow: none; 
 }
 
 .portfolio-buttons button:hover {
-  background-color: #00ffd5; /* turquoise fill on hover */
-  color: #081014;            /* dark text on hover */
+  background-color: #00ffd5;
+  color: #081014;            
   border-color: #00ffd5;
 }
 
-/* Explore Cryptocurrency button */
 .explore-btn {
   display: block;
   margin: 2rem auto 0;
@@ -214,3 +211,53 @@ html {
   scroll-behavior: smooth;
 }
 
+.user-details {
+  background-color: #111b1e;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+}
+
+.user-details h3 {
+  margin-bottom: 1rem;
+  color: #00ffd5;
+}
+
+.details-form label {
+  display: block;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.details-form input {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #00ffd5;
+  background-color: #081014;
+  color: #00ffd5;
+  margin-top: 0.5rem;
+}
+
+.btn-group {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-btn, .delete-btn {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.edit-btn {
+  background-color: #00ffd5;
+  color: #081014;
+}
+
+.delete-btn {
+  background-color: #ff4d4d;
+  color: white;
+}

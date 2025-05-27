@@ -82,7 +82,6 @@ body {
     }
 }
 
-/* Background Grid Overlay */
 .background-overlay {
     position: absolute;
     top: 60px;
@@ -98,7 +97,6 @@ body {
     height: 100%;
 }
 
-/* Main layout */
 .main-container {
     display: flex;
     height: calc(100vh - 60px);
@@ -128,7 +126,6 @@ body {
     opacity: 0.85;
 }
 
-/* Right content */
 .right-content {
     flex: 1;
     background-color: rgba(255, 255, 255, 0.05);
@@ -172,7 +169,7 @@ body {
     flex-direction: column;
     gap: 15px;
     animation: slidein 0.4s ease;
-    width: 70%; /* Reduced width */
+    width: 70%; 
     max-width: 300px;
 }
 
@@ -288,19 +285,16 @@ body {
     }
 }
 
-/* Hamburger styles */
 .hamburger {
     display: none;
     font-size: 1.5rem;
     cursor: pointer;
 }
 
-/* Mobile nav behavior */
 @media (max-width: 768px) {
     .nav-container {
         flex-direction: row;
         justify-content: space-between;
-        /* padding: 10px 15px; */
         width: 110vw;
     }
 

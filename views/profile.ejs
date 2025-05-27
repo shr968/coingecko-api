@@ -7,7 +7,7 @@
 </head>
 <body>
   <header>
-    <div class="logo">BITFOLIO</div>
+    <div class="logo">CRYPTOALERTS</div>
     <nav>
       <a href="#">Home</a>
       <a href="#">Contact Us</a>
@@ -21,8 +21,8 @@
       <% if (portfolio && portfolio.length > 0) { %>
       <p class="subscribed">Subscribed to:</p>
         <div class="portfolio-buttons">
-        <% portfolio.forEach(coin => { %>
-        <button onclick="loadCrypto('<%= coin %>')"><%= coin %></button>
+        <% portfolio.forEach(item => { %>
+        <button onclick="loadCrypto('<%= item.coin %>')"><%= item.coin %></button>
         <% }) %>
         </div>
       <% } else { %>
@@ -46,9 +46,20 @@
           <div class="info">Rise/Fall</div>
           <div class="info">Ranking</div>
         </div>
-        <div class="user-details">
-          User Entered Details – Threshold, Interval for Mails, Edit Button and Delete Button
-        </div>
+        <div class="user-details" id="user-details" style="display: none;">
+  <h3 style="margin-bottom: 1rem;">Crypto Preferences for <span id="selected-crypto-name"></span></h3>
+  <form id="crypto-preferences-form">
+    <label for="threshold">Threshold (USD):</label>
+    <input type="number" id="threshold" name="threshold" required><br><br>
+
+    <label for="interval">Email Interval (in hours):</label>
+    <input type="number" id="interval" name="interval" required><br><br>
+
+    <button type="submit">Edit Preferences</button>
+    <button type="button" id="deleteCryptoBtn">Delete from Portfolio</button>
+  </form>
+</div>
+
       </div>
     </section>
   </main>
@@ -58,10 +69,11 @@
   const chartTitle = document.querySelector('.crypto-title');
   const chartCanvas = document.getElementById('cryptoChart');
   const infoBoxes = document.querySelectorAll('.info');
+
   try {
     const res = await fetch(`https://api.coingecko.com/api/v3/coins/${coinId}`);
     const data = await res.json();
-    
+
     chartTitle.textContent = data.name;
     infoBoxes[0].textContent = `Current Price: $${data.market_data.current_price.usd}`;
     infoBoxes[1].textContent = `24h Change: ${data.market_data.price_change_percentage_24h.toFixed(2)}%`;
@@ -69,7 +81,6 @@
 
     const historyRes = await fetch(`https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=usd&days=7`);
     const history = await historyRes.json();
-
     const labels = history.prices.map(p => new Date(p[0]).toLocaleDateString());
     const prices = history.prices.map(p => p[1]);
 
@@ -94,9 +105,7 @@
       options: {
         responsive: true,
         plugins: {
-          legend: {
-            labels: { color: 'white' }
-          }
+          legend: { labels: { color: 'white' } }
         },
         scales: {
           x: { ticks: { color: 'white' } },
@@ -105,15 +114,53 @@
       }
     });
 
-    // Show and scroll to the chart section
-    const chartSection = document.getElementById('crypto-section');
-    chartSection.style.display = 'block';
-    chartSection.scrollIntoView({ behavior: 'smooth' });
+    const formContainer = document.getElementById('user-details');
+    const cryptoNameSpan = document.getElementById('selected-crypto-name');
+    const thresholdInput = document.getElementById('threshold');
+    const intervalInput = document.getElementById('interval');
+    const deleteBtn = document.getElementById('deleteCryptoBtn');
+
+    cryptoNameSpan.textContent = coinId;
+    formContainer.style.display = 'block';
+
+    const user = "<%= username %>"; 
+    const prefRes = await fetch(`/get-preferences/${user}/${coinId}`);
+    const prefs = await prefRes.json();
+
+    thresholdInput.value = prefs.threshold || '';
+    intervalInput.value = prefs.interval || '';
+
+    const form = document.getElementById('crypto-preferences-form');
+    form.onsubmit = async (e) => {
+      e.preventDefault();
+      await fetch(`/edit-preferences/${user}/${coinId}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          threshold: thresholdInput.value,
+          interval: intervalInput.value
+        })
+      });
+      alert("Preferences updated.");
+    };
+
+    deleteBtn.onclick = async () => {
+      const confirmDel = confirm(`Are you sure you want to delete ${coinId} from your portfolio?`);
+      if (confirmDel) {
+        await fetch(`/delete-crypto/${user}/${coinId}`, { method: 'DELETE' });
+        alert(`${coinId} removed.`);
+        location.reload(); 
+      }
+    };
+
+    document.getElementById('crypto-section').style.display = 'block';
+    document.getElementById('crypto-section').scrollIntoView({ behavior: 'smooth' });
 
   } catch (err) {
     console.error("Failed to fetch or plot data", err);
   }
 }
+
 </script>
 </body>
 </html>

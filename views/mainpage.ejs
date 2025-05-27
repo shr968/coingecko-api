@@ -9,7 +9,7 @@
 </head>
 <body>
    <div class="nav-container">
-  <div class="logo">BITFOLIO</div>
+  <div class="logo">CRYPTOALERTS</div>
   <div class="hamburger" id="hamburger">
     <i class="fas fa-bars"></i>
   </div>
@@ -36,7 +36,7 @@
 
     <div class="main-container">
         <div class="left-content">
-            <h1>Bitfolio</h1>
+            <h1>CrptoAlerts</h1>
             <p>Track your portfolio with precision.</p>
         </div>
         <div class="right-content">
@@ -66,13 +66,13 @@
     <footer class="footer-container">
         <div class="footer-content">
             <div class="footer-logo">
-                <h3>Bitfolio</h3>
+                <h3>CrptoAlerts</h3>
                 <p>&copy; 2025 Bitfolio. All rights reserved.</p>
             </div>
             <div class="footer-contact">
                 <h4>Contact Us</h4>
                 <ul>
-                    <li><i class="fas fa-envelope"></i> bitfolio@gmail.com</li>
+                    <li><i class="fas fa-envelope"></i> crptoalerts@gmail.com</li>
                     <li><i class="fas fa-phone"></i> +91 98765 43210</li>
                     <li><i class="fas fa-map-marker-alt"></i> Bangalore, India</li>
                 </ul>
@@ -88,12 +88,10 @@
     const hamburger = document.getElementById("hamburger");
     const navLinks = document.getElementById("nav-links");
 
-    // Toggle mobile menu
     hamburger.addEventListener("click", () => {
         navLinks.classList.toggle("show");
     });
 
-    // Form toggle
     loginBtn.addEventListener("click", () => {
         loginBtn.classList.add("active");
         signupBtn.classList.remove("active");
@@ -112,7 +110,6 @@
         navLinks.classList.toggle("show");
     });
 
-    // Scroll to login form if Login in nav clicked
     document.querySelectorAll('.mobile-login-btn a').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
