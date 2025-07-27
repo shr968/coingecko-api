@@ -1,3 +1,4 @@
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 const express = require('express');
 const path = require('path');
 const connectDB = require('./db');
@@ -5,6 +6,8 @@ const User = require('../models/User');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 require('./monitor');
+const logger = require('./logger');
+const rateLimit = require('express-rate-limit');
 
 const app = express();
 
@@ -15,6 +18,19 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, '../assets')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, 
+  max: 100, 
+  message: {
+    success: false,
+    message: "Too many requests from this IP, please try again later.",
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+app.use(limiter);
 
 app.get('/', (req, res) => {
     res.render('mainpage');
@@ -34,7 +50,7 @@ app.post('/signup', async (req, res) => {
 
         res.redirect('/profile?user=' + username);
     } catch (err) {
-        console.error(err);
+        logger.error(err);
         res.send('Signup failed.');
     }
 });
@@ -49,7 +65,7 @@ app.post('/login', async (req, res) => {
 
         res.redirect('/profile?user=' + user.username);
     } catch (err) {
-        console.error(err);
+        logger.error(err);
         res.send('Login failed.');
     }
 });
@@ -65,7 +81,7 @@ app.get('/profile', async (req, res) => {
             portfolio: user.portfolio || []
         });
     } catch (err) {
-        console.error(err);
+        logger.error(err);
         res.send('Error loading profile');
     }
 });
@@ -88,7 +104,7 @@ app.post('/add-crypto', async (req, res) => {
 
         res.json({ success: true });
     } catch (err) {
-        console.error(err);
+        logger.error(err);
         res.status(500).send("Failed to add crypto");
     }
 });
@@ -129,5 +145,5 @@ app.delete('/delete-crypto/:user/:coinId', async (req, res) => {
 });
 
 app.listen(3000, () => {
-    console.log('✅ Server listening on port 3000');
+    logger.info('✅ Server listening on port 3000');
 });

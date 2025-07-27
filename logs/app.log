@@ -1,0 +1,177 @@
+[2025-07-27 07:51:47] INFO: ✅ Server listening on port 3000
+[2025-07-27 07:51:47] INFO: ✅ MongoDB connected
+[2025-07-27 07:52:00] INFO: [2025-07-27T02:22:00.019Z] Checking user portfolios...
+[2025-07-27 07:52:03] ERROR: Error checking bitcoin for shreyanayakb.261104@gmail.com:
+[2025-07-27 07:52:03] ERROR: Error checking bitcoin for shreyanayakb26@gmail.com:
+[2025-07-27 07:52:57] INFO: ✅ Server listening on port 3000
+[2025-07-27 07:52:57] INFO: ✅ MongoDB connected
+[2025-07-27 07:54:06] INFO: ✅ Server listening on port 3000
+[2025-07-27 07:54:06] INFO: ✅ MongoDB connected
+[2025-07-27 07:56:00] INFO: [2025-07-27T02:26:00.030Z] Checking user portfolios...
+[2025-07-27 07:56:00] ERROR: Error checking bitcoin for shreyanayakb.261104@gmail.com:
+[2025-07-27 07:56:01] ERROR: Error checking bitcoin for shreyanayakb26@gmail.com:
+[2025-07-27 07:58:00] INFO: [2025-07-27T02:28:00.020Z] Checking user portfolios...
+[2025-07-27 07:58:00] ERROR: Error checking bitcoin for shreyanayakb.261104@gmail.com:
+[2025-07-27 07:58:00] ERROR: Error checking bitcoin for shreyanayakb26@gmail.com:
+[2025-07-27 07:58:01] INFO: Updated portfolio for user shreyanayakb.26104@gmail.com
+[2025-07-27 08:00:00] INFO: [2025-07-27T02:30:00.014Z] Checking user portfolios...
+[2025-07-27 08:00:01] ERROR: Error checking bitcoin for shreyanayakb.261104@gmail.com:
+[2025-07-27 08:00:01] ERROR: Error checking bitcoin for shreyanayakb26@gmail.com:
+[2025-07-27 08:02:00] INFO: [2025-07-27T02:32:00.022Z] Checking user portfolios...
+[2025-07-27 08:02:00] ERROR: Error checking bitcoin for shreyanayakb.261104@gmail.com:
+[2025-07-27 08:02:01] ERROR: Error checking bitcoin for shreyanayakb26@gmail.com:
+[2025-07-27 08:03:49] INFO: ✅ Server listening on port 3000
+[2025-07-27 08:03:49] INFO: ✅ MongoDB connected
+[2025-07-27 08:04:00] INFO: [2025-07-27T02:34:00.024Z] Checking user portfolios...
+[2025-07-27 08:04:00] INFO: Checking coin: tether for user: shreyanayakb.261104@gmail.com
+[2025-07-27 08:04:00] INFO: Checking coin: bitcoin for user: shreyanayakb.261104@gmail.com
+[2025-07-27 08:04:00] ERROR: ❌ Error for bitcoin - shreyanayakb.261104@gmail.com
+[2025-07-27 08:04:00] ERROR: → Error name: Error
+[2025-07-27 08:04:00] ERROR: → Error message: self-signed certificate in certificate chain
+[2025-07-27 08:04:00] ERROR: → Full error: Error: self-signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1679:34)
+    at TLSSocket.emit (node:events:518:28)
+    at TLSSocket._finishInit (node:_tls_wrap:1078:8)
+    at ssl.onhandshakedone (node:_tls_wrap:864:12)
+[2025-07-27 08:04:00] INFO: Checking coin: bitcoin for user: shreyanayakb26@gmail.com
+[2025-07-27 08:04:01] ERROR: ❌ Error for bitcoin - shreyanayakb26@gmail.com
+[2025-07-27 08:04:01] ERROR: → Error name: Error
+[2025-07-27 08:04:01] ERROR: → Error message: self-signed certificate in certificate chain
+[2025-07-27 08:04:01] ERROR: → Full error: Error: self-signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1679:34)
+    at TLSSocket.emit (node:events:518:28)
+    at TLSSocket._finishInit (node:_tls_wrap:1078:8)
+    at ssl.onhandshakedone (node:_tls_wrap:864:12)
+[2025-07-27 08:04:01] INFO: Checking coin: bitcoin for user: shreyanayakb.26104@gmail.com
+[2025-07-27 08:05:05] INFO: ✅ Server listening on port 3000
+[2025-07-27 08:05:05] INFO: ✅ MongoDB connected
+[2025-07-27 08:06:00] INFO: [2025-07-27T02:36:00.018Z] Checking user portfolios...
+[2025-07-27 08:06:00] INFO: Checking coin: tether for user: shreyanayakb.261104@gmail.com
+[2025-07-27 08:06:00] INFO: Checking coin: bitcoin for user: shreyanayakb.261104@gmail.com
+[2025-07-27 08:06:04] INFO: Alert sent to shreyanayakb.261104@gmail.com for bitcoin
+[2025-07-27 08:06:04] INFO: Updated portfolio for user shreyanayakb.261104@gmail.com
+[2025-07-27 08:06:04] INFO: Checking coin: bitcoin for user: shreyanayakb26@gmail.com
+[2025-07-27 08:06:08] INFO: Alert sent to shreyanayakb26@gmail.com for bitcoin
+[2025-07-27 08:06:08] INFO: Updated portfolio for user shreyanayakb26@gmail.com
+[2025-07-27 08:06:08] INFO: Checking coin: bitcoin for user: shreyanayakb.26104@gmail.com
+[2025-07-27 08:22:24] INFO: ✅ Server listening on port 3000
+[2025-07-27 08:22:24] INFO: ✅ MongoDB connected
+[2025-07-27 08:22:34] INFO: 🌐 Testing connection to CoinGecko API...
+[2025-07-27 08:22:36] INFO: ✅ CoinGecko API responded:
+[2025-07-27 08:24:00] INFO: [2025-07-27T02:54:00.016Z] Checking user portfolios...
+[2025-07-27 08:24:00] INFO: Checking coin: tether for user: shreyanayakb.261104@gmail.com
+[2025-07-27 08:24:00] INFO: Checking coin: bitcoin for user: shreyanayakb.261104@gmail.com
+[2025-07-27 08:24:00] ERROR: ❌ Error for bitcoin - shreyanayakb.261104@gmail.com
+[2025-07-27 08:24:00] ERROR: → Error name: Error
+[2025-07-27 08:24:00] ERROR: → Error message: self-signed certificate in certificate chain
+[2025-07-27 08:24:00] ERROR: → Full error: Error: self-signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1679:34)
+    at TLSSocket.emit (node:events:518:28)
+    at TLSSocket._finishInit (node:_tls_wrap:1078:8)
+    at ssl.onhandshakedone (node:_tls_wrap:864:12)
+[2025-07-27 08:24:00] INFO: Checking coin: bitcoin for user: shreyanayakb26@gmail.com
+[2025-07-27 08:24:01] ERROR: ❌ Error for bitcoin - shreyanayakb26@gmail.com
+[2025-07-27 08:24:01] ERROR: → Error name: Error
+[2025-07-27 08:24:01] ERROR: → Error message: self-signed certificate in certificate chain
+[2025-07-27 08:24:01] ERROR: → Full error: Error: self-signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1679:34)
+    at TLSSocket.emit (node:events:518:28)
+    at TLSSocket._finishInit (node:_tls_wrap:1078:8)
+    at ssl.onhandshakedone (node:_tls_wrap:864:12)
+[2025-07-27 08:24:01] INFO: Checking coin: bitcoin for user: shreyanayakb.26104@gmail.com
+[2025-07-27 08:26:00] INFO: [2025-07-27T02:56:00.026Z] Checking user portfolios...
+[2025-07-27 08:26:00] INFO: Checking coin: tether for user: shreyanayakb.261104@gmail.com
+[2025-07-27 08:26:00] INFO: Checking coin: bitcoin for user: shreyanayakb.261104@gmail.com
+[2025-07-27 08:26:01] ERROR: ❌ Error for bitcoin - shreyanayakb.261104@gmail.com
+[2025-07-27 08:26:01] ERROR: → Error name: Error
+[2025-07-27 08:26:01] ERROR: → Error message: self-signed certificate in certificate chain
+[2025-07-27 08:26:01] ERROR: → Full error: Error: self-signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1679:34)
+    at TLSSocket.emit (node:events:518:28)
+    at TLSSocket._finishInit (node:_tls_wrap:1078:8)
+    at ssl.onhandshakedone (node:_tls_wrap:864:12)
+[2025-07-27 08:26:01] INFO: Checking coin: bitcoin for user: shreyanayakb26@gmail.com
+[2025-07-27 08:26:01] ERROR: ❌ Error for bitcoin - shreyanayakb26@gmail.com
+[2025-07-27 08:26:01] ERROR: → Error name: Error
+[2025-07-27 08:26:01] ERROR: → Error message: self-signed certificate in certificate chain
+[2025-07-27 08:26:01] ERROR: → Full error: Error: self-signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1679:34)
+    at TLSSocket.emit (node:events:518:28)
+    at TLSSocket._finishInit (node:_tls_wrap:1078:8)
+    at ssl.onhandshakedone (node:_tls_wrap:864:12)
+[2025-07-27 08:26:01] INFO: Checking coin: bitcoin for user: shreyanayakb.26104@gmail.com
+[2025-07-27 08:28:00] INFO: [2025-07-27T02:58:00.021Z] Checking user portfolios...
+[2025-07-27 08:28:00] INFO: Checking coin: tether for user: shreyanayakb.261104@gmail.com
+[2025-07-27 08:28:00] INFO: Checking coin: bitcoin for user: shreyanayakb.261104@gmail.com
+[2025-07-27 08:28:00] ERROR: ❌ Error for bitcoin - shreyanayakb.261104@gmail.com
+[2025-07-27 08:28:00] ERROR: → Error name: Error
+[2025-07-27 08:28:00] ERROR: → Error message: self-signed certificate in certificate chain
+[2025-07-27 08:28:00] ERROR: → Full error: Error: self-signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1679:34)
+    at TLSSocket.emit (node:events:518:28)
+    at TLSSocket._finishInit (node:_tls_wrap:1078:8)
+    at ssl.onhandshakedone (node:_tls_wrap:864:12)
+[2025-07-27 08:28:00] INFO: Checking coin: bitcoin for user: shreyanayakb26@gmail.com
+[2025-07-27 08:28:01] ERROR: ❌ Error for bitcoin - shreyanayakb26@gmail.com
+[2025-07-27 08:28:01] ERROR: → Error name: Error
+[2025-07-27 08:28:01] ERROR: → Error message: self-signed certificate in certificate chain
+[2025-07-27 08:28:01] ERROR: → Full error: Error: self-signed certificate in certificate chain
+    at TLSSocket.onConnectSecure (node:_tls_wrap:1679:34)
+    at TLSSocket.emit (node:events:518:28)
+    at TLSSocket._finishInit (node:_tls_wrap:1078:8)
+    at ssl.onhandshakedone (node:_tls_wrap:864:12)
+[2025-07-27 08:28:01] INFO: Checking coin: bitcoin for user: shreyanayakb.26104@gmail.com
+[2025-07-27 09:00:37] INFO: ✅ Server listening on port 3000
+[2025-07-27 09:00:37] INFO: ✅ MongoDB connected
+[2025-07-27 09:02:00] INFO: [2025-07-27T03:32:00.015Z] Checking user portfolios...
+[2025-07-27 09:02:00] INFO: Checking coin: tether for user: shreyanayakb.261104@gmail.com
+[2025-07-27 09:02:00] INFO: Checking coin: bitcoin for user: shreyanayakb.261104@gmail.com
+[2025-07-27 09:02:00] ERROR: ❌ Error for bitcoin - shreyanayakb.261104@gmail.com
+[2025-07-27 09:02:00] ERROR: → Error name: AggregateError
+[2025-07-27 09:02:00] ERROR: → Error message: 
+[2025-07-27 09:02:00] ERROR: → Full error: AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1714:7)
+[2025-07-27 09:02:00] INFO: Checking coin: bitcoin for user: shreyanayakb26@gmail.com
+[2025-07-27 09:02:01] ERROR: ❌ Error for bitcoin - shreyanayakb26@gmail.com
+[2025-07-27 09:02:01] ERROR: → Error name: AggregateError
+[2025-07-27 09:02:01] ERROR: → Error message: 
+[2025-07-27 09:02:01] ERROR: → Full error: AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1714:7)
+[2025-07-27 09:02:01] INFO: Checking coin: bitcoin for user: shreyanayakb.26104@gmail.com
+[2025-07-27 09:04:00] INFO: [2025-07-27T03:34:00.021Z] Checking user portfolios...
+[2025-07-27 09:04:00] INFO: Checking coin: tether for user: shreyanayakb.261104@gmail.com
+[2025-07-27 09:04:00] INFO: Checking coin: bitcoin for user: shreyanayakb.261104@gmail.com
+[2025-07-27 09:04:01] ERROR: ❌ Error for bitcoin - shreyanayakb.261104@gmail.com
+[2025-07-27 09:04:01] ERROR: → Error name: AggregateError
+[2025-07-27 09:04:01] ERROR: → Error message: 
+[2025-07-27 09:04:01] ERROR: → Full error: AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1714:7)
+[2025-07-27 09:04:01] INFO: Checking coin: bitcoin for user: shreyanayakb26@gmail.com
+[2025-07-27 09:04:01] ERROR: ❌ Error for bitcoin - shreyanayakb26@gmail.com
+[2025-07-27 09:04:01] ERROR: → Error name: AggregateError
+[2025-07-27 09:04:01] ERROR: → Error message: 
+[2025-07-27 09:04:01] ERROR: → Full error: AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1139:18)
+    at afterConnectMultiple (node:net:1714:7)
+[2025-07-27 09:04:01] INFO: Checking coin: bitcoin for user: shreyanayakb.26104@gmail.com
+[2025-07-27 09:06:00] INFO: [2025-07-27T03:36:00.017Z] Checking user portfolios...
+[2025-07-27 09:06:00] INFO: Checking coin: tether for user: shreyanayakb.261104@gmail.com
+[2025-07-27 09:06:00] INFO: Checking coin: bitcoin for user: shreyanayakb.261104@gmail.com
+[2025-07-27 09:06:01] INFO: 📬 Queued alert for shreyanayakb.261104@gmail.com - bitcoin
+[2025-07-27 09:06:01] INFO: Updated portfolio for user shreyanayakb.261104@gmail.com
+[2025-07-27 09:06:01] INFO: Checking coin: bitcoin for user: shreyanayakb26@gmail.com
+[2025-07-27 09:06:01] INFO: 📬 Queued alert for shreyanayakb26@gmail.com - bitcoin
+[2025-07-27 09:06:01] INFO: Updated portfolio for user shreyanayakb26@gmail.com
+[2025-07-27 09:06:01] INFO: Checking coin: bitcoin for user: shreyanayakb.26104@gmail.com
+[2025-07-27 09:08:00] INFO: [2025-07-27T03:38:00.023Z] Checking user portfolios...
+[2025-07-27 09:08:00] INFO: Checking coin: tether for user: shreyanayakb.261104@gmail.com
+[2025-07-27 09:08:00] INFO: Checking coin: bitcoin for user: shreyanayakb.261104@gmail.com
+[2025-07-27 09:08:01] INFO: 📬 Queued alert for shreyanayakb.261104@gmail.com - bitcoin
+[2025-07-27 09:08:01] INFO: Updated portfolio for user shreyanayakb.261104@gmail.com
+[2025-07-27 09:08:01] INFO: Checking coin: bitcoin for user: shreyanayakb26@gmail.com
+[2025-07-27 09:08:01] INFO: 📬 Queued alert for shreyanayakb26@gmail.com - bitcoin
+[2025-07-27 09:08:01] INFO: Updated portfolio for user shreyanayakb26@gmail.com
+[2025-07-27 09:08:01] INFO: Checking coin: bitcoin for user: shreyanayakb.26104@gmail.com

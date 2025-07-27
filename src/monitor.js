@@ -4,16 +4,8 @@ const axios = require('axios');
 const nodemailer = require('nodemailer');
 const User = require('../models/User');
 require('dotenv').config();
-
-
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
-
+const logger = require('./logger');
+const { sendToQueue } = require('./mailQueue');
 
 
 async function getCryptoPrice(cryptoId, retries = 3, delayMs = 1000) {
@@ -26,7 +18,7 @@ async function getCryptoPrice(cryptoId, retries = 3, delayMs = 1000) {
     return res.data[cryptoId].usd;
   } catch (err) {
     if (err.response && err.response.status === 429 && retries > 0) {
-      console.warn(`Rate limited on ${cryptoId}, retrying after ${delayMs}ms...`);
+      logger.warn(`Rate limited on ${cryptoId}, retrying after ${delayMs}ms...`);
       await new Promise(r => setTimeout(r, delayMs));
       return getCryptoPrice(cryptoId, retries - 1, delayMs * 2); 
     }
@@ -36,7 +28,7 @@ async function getCryptoPrice(cryptoId, retries = 3, delayMs = 1000) {
 
 
 cron.schedule('*/2 * * * *', async () => {
-  console.log(`[${new Date().toISOString()}] Checking user portfolios...`);
+  logger.info(`[${new Date().toISOString()}] Checking user portfolios...`);
 
   try {
     const users = await User.find({});
@@ -44,17 +36,18 @@ cron.schedule('*/2 * * * *', async () => {
       let portfolioChanged = false;
 
       if (!Array.isArray(user.portfolio)) {
-        console.warn(`User ${user.email} has invalid portfolio`);
+        logger.warn(`User ${user.email} has invalid portfolio`);
         continue;
       }
 
       for (const item of user.portfolio) {
         if (!item || !item.coin) {
-          console.warn(`Skipping invalid portfolio item for user ${user.email}`);
+          logger.warn(`Skipping invalid portfolio item for user ${user.email}`);
           continue;
         }
 
         try {
+          logger.info(`Checking coin: ${item.coin} for user: ${user.email}`);
           const currentPrice = await getCryptoPrice(item.coin.toLowerCase());
 
           if (!item.lastPrice) {
@@ -72,27 +65,33 @@ cron.schedule('*/2 * * * *', async () => {
               text: `Hi ${user.username || user.email},\n\nThe price of ${item.coin.toUpperCase()} has changed by ${priceChange.toFixed(2)}%.\n\nPrevious Price: $${item.lastPrice}\nCurrent Price: $${currentPrice}\n\n- Crypto Tracker`
             };
 
-            await transporter.sendMail(mailOptions);
-            console.log(`Alert sent to ${user.email} for ${item.coin}`);
+
+            await sendToQueue(mailOptions);
+            logger.info(`📬 Queued alert for ${user.email} - ${item.coin}`);
+
 
             item.lastPrice = currentPrice;
             portfolioChanged = true;
           }
         } catch (err) {
-          console.error(`Error checking ${item.coin} for ${user.email}:`, err.message);
-        }
+            logger.error(`❌ Error for ${item.coin} - ${user.email}`);
+            logger.error(`→ Error name: ${err.name}`);
+            logger.error(`→ Error message: ${err.message}`);
+            logger.error(`→ Full error: ${err.stack}`);
+}
+
       }
 
       if (portfolioChanged) {
         try {
           await user.save();
-          console.log(`Updated portfolio for user ${user.email}`);
+          logger.info(`Updated portfolio for user ${user.email}`);
         } catch (saveErr) {
-          console.error(`Error saving user ${user.email}:`, saveErr.message);
+          logger.error(`Error saving user ${user.email}:`, saveErr.message);
         }
       }
     }
   } catch (err) {
-    console.error('Error in cron job:', err.message);
+    logger.error('Error in cron job:', err.message);
   }
 });
